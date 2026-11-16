@@ -39,7 +39,8 @@ public class AccessingDataJpaApplication {
             logger.info("");
 
             // fetch an individual customer by ID
-            Customer customer = repository.findById(1L);
+            Customer customer = repository.findById(1L)
+                    .orElseThrow(() -> new IllegalStateException("Customer with ID 1 not found"));
             logger.info("Customer found with findById(1L):");
             logger.info("--------------------------------");
             logger.info(customer.toString());
